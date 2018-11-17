@@ -12,6 +12,7 @@ import com.sandeepsingh.feedsapplication.base.utils.Utils
 import com.sandeepsingh.feedsapplication.feature.IFeed
 import com.sandeepsingh.feedsapplication.feature.adapter.FeedAdapter
 import com.sandeepsingh.feedsapplication.feature.model.FeedModel
+import com.sandeepsingh.feedsapplication.feature.pojos.FeedItem
 import com.sandeepsingh.feedsapplication.feature.pojos.Feeds
 import com.sandeepsingh.feedsapplication.feature.presenter.FeedPresenter
 import kotlinx.android.synthetic.main.activity_feed.*
@@ -49,7 +50,7 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
     /**
      * Function to initialise the view related components.
      */
-    private fun initComponents() {
+    public fun initComponents() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         mAdapter = FeedAdapter(ArrayList(), this)
         recycler_view.adapter = mAdapter
@@ -63,7 +64,7 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
      * Function to set the toolbar title for this view
      */
     private fun setToolbar(headerTitle: String) {
-        tv_header.text = headerTitle
+       // tv_header.text = headerTitle
     }
 
     /**
@@ -92,6 +93,21 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
             layout_no_internet.visibility = View.VISIBLE
             recycler_view.visibility = View.GONE
         }
+    }
+
+    fun createDummyData() {
+        val feeds = Feeds()
+        val feedItemArrayList = java.util.ArrayList<FeedItem>()
+        for (i in 0..2) {
+            val feedItem = FeedItem()
+            feedItem.title = "Hello"
+            feedItem.description = "I am there. Please reply."
+            feedItemArrayList.add(feedItem)
+        }
+        feeds.rows = feedItemArrayList
+        mAdapter = FeedAdapter(feeds.rows!!,this)
+        recycler_view.adapter = mAdapter
+        mAdapter.notifyDataSetChanged()
     }
 
     /**

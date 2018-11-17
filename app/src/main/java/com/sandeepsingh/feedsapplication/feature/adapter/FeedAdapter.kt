@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.sandeepsingh.feedsapplication.R
 import com.sandeepsingh.feedsapplication.base.extension.loadFromUrl
+import com.sandeepsingh.feedsapplication.base.utils.Utils
 import com.sandeepsingh.feedsapplication.feature.pojos.FeedItem
 
 /**
@@ -30,7 +31,7 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        holder.onBindViewHolder(listOfFeedsItems, position)
+        holder.onBindViewHolder(listOfFeedsItems, position,context)
     }
 
     /**
@@ -43,7 +44,7 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
         private var tvDescription: TextView = itemView.findViewById(R.id.tv_description)
         private var ivFeedImage: ImageView = itemView.findViewById(R.id.iv_feed_image)
 
-        internal fun onBindViewHolder(listOfFeedsItems: ArrayList<FeedItem>, position: Int) {
+        internal fun onBindViewHolder(listOfFeedsItems: ArrayList<FeedItem>, position: Int, context: Context) {
             val feedItem = listOfFeedsItems[position]
             tvFeedTitle.text = feedItem.title
             tvDescription.text = feedItem.description
@@ -52,6 +53,10 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
                 ivFeedImage.loadFromUrl(feedItem.imageHref)
             } else {
                 ivFeedImage.visibility = View.GONE
+            }
+
+            itemView.setOnClickListener {
+                Utils.showShortToast(context, "Clicked item : $position")
             }
         }
     }
