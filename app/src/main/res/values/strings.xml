@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">FeedsApplication</string>
+    <string name="error_text">No Internet Connection / Something Went Wrong \n Pull To Refresh.</string>
 </resources>

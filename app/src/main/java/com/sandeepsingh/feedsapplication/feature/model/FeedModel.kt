@@ -15,18 +15,24 @@ import retrofit2.Response
  */
 class FeedModel(val presenter : FeedPresenter) : IFeed.PresenterToModel {
 
+    /**
+     * Function that fetches the data from the API and provides updated value.
+     * This method is being invoked by the activity through presenter.
+     */
     override fun loadData() {
         try{
             val iFeedApi = Utils.getRetrofitInstance(URL.FACTS_API).create(IFeedApi :: class.java)
             val call = iFeedApi.getFactsFeeds()
             val callback = object : Callback<Feeds>{
                 override fun onFailure(call: Call<Feeds>, t: Throwable) {
-
+                    presenter.dataNotLoaded()
                 }
 
                 override fun onResponse(call: Call<Feeds>, response: Response<Feeds>) {
                     if (response.isSuccessful){
                         presenter.notifyDataSetChanged(response.body())
+                    } else {
+                        presenter.dataNotLoaded()
                     }
                 }
 
@@ -34,7 +40,7 @@ class FeedModel(val presenter : FeedPresenter) : IFeed.PresenterToModel {
 
             call.enqueue(callback)
         } catch (e : Exception){
-
+            presenter.dataNotLoaded()
         }
     }
 }
