@@ -8,20 +8,20 @@ import android.os.Parcelable
  */
 class FeedItem() : Parcelable {
 
-    var feedTitle : String ?= ""
-    var feedDescription : String ?= ""
-    var feedImage : String ?= ""
+    var title : String ?= ""
+    var description : String ?= ""
+    var imageHref : String ?= ""
 
     constructor(parcel: Parcel) : this() {
-        feedTitle = parcel.readString()
-        feedDescription = parcel.readString()
-        feedImage = parcel.readString()
+        title = parcel.readString()
+        description = parcel.readString()
+        imageHref = parcel.readString()
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(feedTitle)
-        parcel.writeString(feedDescription)
-        parcel.writeString(feedImage)
+        parcel.writeString(title)
+        parcel.writeString(description)
+        parcel.writeString(imageHref)
     }
 
     override fun describeContents(): Int {

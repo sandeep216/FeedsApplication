@@ -2,7 +2,9 @@ package com.sandeepsingh.feedsapplication.feature.view
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.widget.DividerItemDecoration
 import android.support.v7.widget.LinearLayoutManager
+import android.support.v7.widget.RecyclerView
 import butterknife.ButterKnife
 import com.sandeepsingh.feedsapplication.R
 import com.sandeepsingh.feedsapplication.feature.IFeed
@@ -36,8 +38,12 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
 
     fun initComponents(){
         recycler_view.layoutManager = LinearLayoutManager(this)
-        mAdapter = FeedAdapter()
+        mAdapter = FeedAdapter(ArrayList(),this)
         recycler_view.adapter = mAdapter
+        recycler_view.addItemDecoration(DividerItemDecoration(this,RecyclerView.VERTICAL))
+        refresh_layout.setOnRefreshListener {
+           loadData()
+        }
     }
 
     fun setToolbar(headerTitle : String){
@@ -49,8 +55,9 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
         mPresenter.loadData()
     }
 
-    override fun notifyDataSetChanged(feeds: Feeds) {
+    override fun notifyDataSetChanged(feeds: Feeds?) {
         refresh_layout.isRefreshing = false
-        setToolbar(feeds.title!!)
+        setToolbar(feeds?.title!!)
+        mAdapter.notifyData(feeds.rows)
     }
 }

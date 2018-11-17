@@ -16,10 +16,10 @@ interface IFeed {
     }
 
     interface ModelToPresenter{
-        fun notifyDataSetChanged(feeds: Feeds)
+        fun notifyDataSetChanged(feeds: Feeds?)
     }
 
     interface PresenterToView{
-        fun notifyDataSetChanged(feeds: Feeds)
+        fun notifyDataSetChanged(feeds: Feeds?)
     }
 }

@@ -1,9 +1,9 @@
 package com.sandeepsingh.feedsapplication.feature.presenter
 
+import com.sandeepsingh.feedsapplication.base.BasePresenter
 import com.sandeepsingh.feedsapplication.feature.IFeed
 import com.sandeepsingh.feedsapplication.feature.model.FeedModel
 import com.sandeepsingh.feedsapplication.feature.pojos.Feeds
-import com.sandeepsingh.githubuserauthenticationapp.base.BasePresenter
 
 /**
  * Created by Sandeep on 11/17/18.
@@ -12,6 +12,10 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
 
     private var model : FeedModel ?= null
 
+    init {
+        setView(view)
+    }
+
     fun setModel(model: FeedModel){
         this.model = model
     }
@@ -19,7 +23,7 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
         model!!.loadData()
     }
 
-    override fun notifyDataSetChanged(feeds: Feeds) {
+    override fun notifyDataSetChanged(feeds: Feeds?) {
         if (getView()!= null) {
             getView()!!.notifyDataSetChanged(feeds)
         }

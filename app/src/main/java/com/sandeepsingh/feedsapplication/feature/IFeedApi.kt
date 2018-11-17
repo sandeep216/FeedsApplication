@@ -1,6 +1,7 @@
 package com.sandeepsingh.feedsapplication.feature
 
-import com.google.gson.JsonElement
+
+import com.sandeepsingh.feedsapplication.feature.pojos.Feeds
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -10,5 +11,5 @@ import retrofit2.http.GET
 interface IFeedApi {
 
     @GET("s/2iodh4vg0eortkl/facts.json")
-    fun getFactsFeeds() : Call<JsonElement>
+    fun getFactsFeeds() : Call<Feeds>
 }
