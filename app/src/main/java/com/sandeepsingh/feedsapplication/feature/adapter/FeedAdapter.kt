@@ -13,6 +13,10 @@ import com.sandeepsingh.feedsapplication.feature.pojos.FeedItem
 
 /**
  * Created by Sandeep on 11/17/18.
+ *
+ * Adapter class to render the row item inside recycler view
+ * @param listOfFeedsItems : List of items to show in recycler view.
+ * @param context : Context of activity to make use of related resources
  */
 class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var context: Context) :
     RecyclerView.Adapter<FeedAdapter.FeedViewHolder>() {
@@ -29,6 +33,10 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
         holder.onBindViewHolder(listOfFeedsItems, position)
     }
 
+    /**
+     * Viewholder class for individual item to be inflated inside the row view.
+     * @param itemView : View to be inflated for individual item.
+     */
     class FeedViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         private var tvFeedTitle: TextView = itemView.findViewById(R.id.tv_title)
@@ -48,6 +56,10 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
         }
     }
 
+    /**
+     * Function that updates the list with updated values.
+     * @param list : Updated values as a list.
+     */
     fun notifyData(list: ArrayList<FeedItem>?) {
         this.listOfFeedsItems = list!!
         notifyDataSetChanged()

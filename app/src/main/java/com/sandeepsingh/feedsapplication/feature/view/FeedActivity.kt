@@ -18,6 +18,11 @@ import kotlinx.android.synthetic.main.activity_feed.*
 import kotlinx.android.synthetic.main.layout_pull_referesh.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
 
+/**
+ * Created by Sandeep on 11/17/18.
+ *
+ * View that shows feeds being fetched from the model.
+ */
 class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
 
     private lateinit var mPresenter: FeedPresenter
@@ -32,12 +37,18 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
         loadData()
     }
 
+    /**
+     * Function to initialise the MVP pattern for this feature.
+     */
     private fun setupMvp() {
         mPresenter = FeedPresenter(this)
         val feedModel = FeedModel(mPresenter)
         mPresenter.setModel(feedModel)
     }
 
+    /**
+     * Function to initialise the view related components.
+     */
     private fun initComponents() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         mAdapter = FeedAdapter(ArrayList(), this)
@@ -48,10 +59,16 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
         }
     }
 
+    /**
+     * Function to set the toolbar title for this view
+     */
     private fun setToolbar(headerTitle: String) {
         tv_header.text = headerTitle
     }
 
+    /**
+     * Method that invokes model's method through presenter to fetch updated feeds.
+     */
     private fun loadData() {
         refresh_layout.isRefreshing = true
         if (Utils.haveNetworkConnection(this)) {
@@ -62,6 +79,10 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
         }
     }
 
+    /**
+     * Function that plays with visibility of components
+     * @param isVisible : Boolean value to passed based on the (connectivity/no data) scenarios.
+     */
     private fun componentsVisibility(isVisible : Boolean){
         refresh_layout.isRefreshing = false
         if (isVisible){
@@ -73,12 +94,19 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
         }
     }
 
+    /**
+     * Notifies adapter with new values of feeds fetched from API.
+     * @param feeds : Updated feeds from the API
+     */
     override fun notifyDataSetChanged(feeds: Feeds?) {
         refresh_layout.isRefreshing = false
         setToolbar(feeds?.title!!)
         mAdapter.notifyData(feeds.rows)
     }
 
+    /**
+     * Function called when there is no data or any exception occur while calling API.
+     */
     override fun dataNotLoaded() {
         componentsVisibility(false)
     }

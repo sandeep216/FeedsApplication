@@ -15,6 +15,10 @@ import retrofit2.Response
  */
 class FeedModel(val presenter : FeedPresenter) : IFeed.PresenterToModel {
 
+    /**
+     * Function that fetches the data from the API and provides updated value.
+     * This method is being invoked by the activity through presenter.
+     */
     override fun loadData() {
         try{
             val iFeedApi = Utils.getRetrofitInstance(URL.FACTS_API).create(IFeedApi :: class.java)
