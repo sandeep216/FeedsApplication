@@ -1,8 +1,6 @@
 package com.sandeepsingh.feedsapplication.feature.model
 
-import com.google.gson.JsonElement
-import com.sandeepsingh.feedsapplication.base.RetrofitServiceGenerator
-import com.sandeepsingh.feedsapplication.base.prefs.URL
+import com.sandeepsingh.feedsapplication.base.constants.URL
 import com.sandeepsingh.feedsapplication.base.utils.Utils
 import com.sandeepsingh.feedsapplication.feature.IFeed
 import com.sandeepsingh.feedsapplication.feature.IFeedApi

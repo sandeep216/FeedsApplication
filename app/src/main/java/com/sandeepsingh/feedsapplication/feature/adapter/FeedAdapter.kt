@@ -7,8 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import butterknife.BindView
-import butterknife.ButterKnife
 import com.sandeepsingh.feedsapplication.R
 import com.sandeepsingh.feedsapplication.base.extension.loadFromUrl
 import com.sandeepsingh.feedsapplication.feature.pojos.FeedItem
@@ -35,7 +33,7 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
 
         private var tvFeedTitle: TextView = itemView.findViewById(R.id.tv_title)
         private var tvDescription: TextView = itemView.findViewById(R.id.tv_description)
-        var ivFeedImage: ImageView = itemView.findViewById(R.id.iv_feed_image)
+        private var ivFeedImage: ImageView = itemView.findViewById(R.id.iv_feed_image)
 
         internal fun onBindViewHolder(listOfFeedsItems: ArrayList<FeedItem>, position: Int) {
             val feedItem = listOfFeedsItems[position]

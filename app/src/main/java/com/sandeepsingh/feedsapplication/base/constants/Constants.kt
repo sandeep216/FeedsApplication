@@ -1,4 +1,4 @@
-package com.sandeepsingh.feedsapplication.base.prefs
+package com.sandeepsingh.feedsapplication.base.constants
 /**
  * Created by Sandeep on 11/17/18.
  */
