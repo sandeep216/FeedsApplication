@@ -21,12 +21,14 @@ class FeedModel(val presenter : FeedPresenter) : IFeed.PresenterToModel {
             val call = iFeedApi.getFactsFeeds()
             val callback = object : Callback<Feeds>{
                 override fun onFailure(call: Call<Feeds>, t: Throwable) {
-
+                    presenter.dataNotLoaded()
                 }
 
                 override fun onResponse(call: Call<Feeds>, response: Response<Feeds>) {
                     if (response.isSuccessful){
                         presenter.notifyDataSetChanged(response.body())
+                    } else {
+                        presenter.dataNotLoaded()
                     }
                 }
 
@@ -34,7 +36,7 @@ class FeedModel(val presenter : FeedPresenter) : IFeed.PresenterToModel {
 
             call.enqueue(callback)
         } catch (e : Exception){
-
+            presenter.dataNotLoaded()
         }
     }
 }

@@ -28,4 +28,11 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
             getView()!!.notifyDataSetChanged(feeds)
         }
     }
+
+    override fun dataNotLoaded() {
+        if (getView()!= null){
+            getView()!!.dataNotLoaded()
+        }
+    }
+
 }
