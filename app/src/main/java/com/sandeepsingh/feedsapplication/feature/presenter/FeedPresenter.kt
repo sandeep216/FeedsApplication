@@ -52,4 +52,12 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
         }
     }
 
+    override fun getFeeds(): Feeds? {
+       return model!!.getFeeds()
+    }
+
+    override fun setFeeds(feeds: Feeds?) {
+        model!!.setFeeds(feeds)
+    }
+
 }

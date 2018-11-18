@@ -31,7 +31,7 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
     }
 
     override fun onBindViewHolder(holder: FeedViewHolder, position: Int) {
-        holder.onBindViewHolder(listOfFeedsItems, position,context)
+        holder.onBindViewHolder(listOfFeedsItems, position, context)
     }
 
     /**
@@ -46,17 +46,22 @@ class FeedAdapter(private var listOfFeedsItems: ArrayList<FeedItem>, private var
 
         internal fun onBindViewHolder(listOfFeedsItems: ArrayList<FeedItem>, position: Int, context: Context) {
             val feedItem = listOfFeedsItems[position]
-            tvFeedTitle.text = feedItem.title
-            tvDescription.text = feedItem.description
-            if (feedItem.imageHref != null) {
-                ivFeedImage.visibility = View.VISIBLE
-                ivFeedImage.loadFromUrl(feedItem.imageHref)
+            if (feedItem.imageHref == null && feedItem.description == null && feedItem.imageHref == null) {
+                itemView.visibility = View.GONE
             } else {
-                ivFeedImage.visibility = View.GONE
-            }
+                itemView.visibility = View.VISIBLE
+                tvFeedTitle.text = feedItem.title
+                tvDescription.text = feedItem.description
+                if (feedItem.imageHref != null) {
+                    ivFeedImage.visibility = View.VISIBLE
+                    ivFeedImage.loadFromUrl(feedItem.imageHref)
+                } else {
+                    ivFeedImage.visibility = View.GONE
+                }
 
-            itemView.setOnClickListener {
-                Utils.showShortToast(context, "Clicked item : $position")
+                itemView.setOnClickListener {
+                    Utils.showShortToast(context, "Clicked item : $position")
+                }
             }
         }
     }
