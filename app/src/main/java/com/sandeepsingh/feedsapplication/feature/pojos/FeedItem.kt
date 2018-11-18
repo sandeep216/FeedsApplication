@@ -5,6 +5,8 @@ import android.os.Parcelable
 
 /**
  * Created by Sandeep on 11/17/18.
+ *
+ * This parcelable item maps the item of rows
  */
 class FeedItem() : Parcelable {
 

@@ -9,6 +9,8 @@ import java.util.ArrayList
 
 /**
  * Created by Sandeep on 11/17/18.
+ *
+ * This parcelable object for mapping the data that contains title and list of rows.
  */
 
 class Feeds() : Parcelable {
@@ -38,16 +40,5 @@ class Feeds() : Parcelable {
         override fun newArray(size: Int): Array<Feeds?> {
             return arrayOfNulls(size)
         }
-    }
-
-    fun getUserList(jsonElement: JsonElement?): Feeds {
-        if (null == jsonElement || jsonElement.isJsonNull)
-            throw NullPointerException("Null tagListElement not supported")
-        if (!jsonElement.isJsonObject)
-            throw IllegalArgumentException("Provided JsonElement is not of type JsonArray")
-
-        val listType = object : TypeToken<Feeds>() {}.type
-
-        return RetrofitServiceGenerator.getGson().fromJson(jsonElement, listType)
     }
 }
