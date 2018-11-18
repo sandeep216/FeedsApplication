@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import butterknife.ButterKnife
 import com.sandeepsingh.feedsapplication.R
+import com.sandeepsingh.feedsapplication.base.constants.CONSTANT
 import com.sandeepsingh.feedsapplication.base.utils.Utils
 import com.sandeepsingh.feedsapplication.feature.IFeed
 import com.sandeepsingh.feedsapplication.feature.adapter.FeedAdapter
@@ -34,8 +35,16 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
         setContentView(R.layout.activity_feed)
         ButterKnife.bind(this)
         setupMvp()
+        if (savedInstanceState != null){
+            mPresenter.setFeeds(savedInstanceState.getParcelable(CONSTANT.FEED_KEY))
+        }
         initComponents()
         loadData()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle?) {
+        outState?.putParcelable(CONSTANT.FEED_KEY,mPresenter.getFeeds())
+        super.onSaveInstanceState(outState)
     }
 
     /**
@@ -52,7 +61,11 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
      */
     private fun initComponents() {
         recycler_view.layoutManager = LinearLayoutManager(this)
-        mAdapter = FeedAdapter(ArrayList(), this)
+        mAdapter = if (mPresenter.getFeeds() != null) {
+            FeedAdapter(mPresenter.getFeeds()!!.rows!!, this)
+        } else {
+            FeedAdapter(ArrayList(),this)
+        }
         recycler_view.adapter = mAdapter
         recycler_view.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
         refresh_layout.setOnRefreshListener {

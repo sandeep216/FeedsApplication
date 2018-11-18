@@ -52,4 +52,18 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
         }
     }
 
+    /**
+     * This methods return data to the view while updating adapter
+     */
+    override fun getFeeds(): Feeds? {
+       return model!!.getFeeds()
+    }
+
+    /**
+     * This methods provides the data if previously fetched
+     */
+    override fun setFeeds(feeds: Feeds?) {
+        model!!.setFeeds(feeds)
+    }
+
 }

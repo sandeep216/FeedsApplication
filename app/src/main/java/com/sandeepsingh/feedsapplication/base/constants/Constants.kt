@@ -8,3 +8,9 @@ class URL {
         const val FACTS_API = "https://dl.dropboxusercontent.com/"
     }
 }
+
+class CONSTANT{
+    companion object {
+        const val FEED_KEY = "feeds"
+    }
+}

@@ -9,10 +9,14 @@ interface IFeed {
 
     interface ViewToPresenter{
         fun loadData()
+        fun getFeeds() : Feeds?
+        fun setFeeds(feeds: Feeds?)
     }
 
     interface PresenterToModel{
         fun loadData()
+        fun getFeeds() : Feeds?
+        fun setFeeds(feeds: Feeds?)
     }
 
     interface ModelToPresenter{
