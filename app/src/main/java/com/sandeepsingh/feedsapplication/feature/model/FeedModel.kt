@@ -17,7 +17,8 @@ class FeedModel(val presenter: IFeed.ModelToPresenter) : IFeed.PresenterToModel 
 
     private var feeds: Feeds? = null
     /**
-     * Function that fetches the data from the API and provides updated value.
+     * Function first checks for last instance of data, if found null then fetches the data from the API
+     * and provides updated value.
      * This method is being invoked by the activity through presenter.
      */
     override fun loadData() {
@@ -50,10 +51,18 @@ class FeedModel(val presenter: IFeed.ModelToPresenter) : IFeed.PresenterToModel 
         }
     }
 
+    /**
+     * Saving the last instance of parcelable data
+     * @param feeds : Last instance of data while saving state
+     */
     override fun setFeeds(feeds: Feeds?) {
         this.feeds = feeds
     }
 
+    /**
+     * Function that returns last instance or updated value for the adapter to the view
+     * @return feeds
+     */
     override fun getFeeds(): Feeds? {
         return feeds
     }
