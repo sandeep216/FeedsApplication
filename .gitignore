@@ -9,4 +9,8 @@
 .DS_Store
 /build
 /captures
+.gradle/4.6/fileHashes/fileHashes.bin
+.gradle/4.6/fileHashes/fileHashes.lock
+.idea/caches/build_file_checksums.ser   
+.idea/workspace.xml
 .externalNativeBuild

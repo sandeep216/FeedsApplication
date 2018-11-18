@@ -17,9 +17,11 @@ interface IFeed {
 
     interface ModelToPresenter{
         fun notifyDataSetChanged(feeds: Feeds?)
+        fun dataNotLoaded()
     }
 
     interface PresenterToView{
         fun notifyDataSetChanged(feeds: Feeds?)
+        fun dataNotLoaded()
     }
 }
