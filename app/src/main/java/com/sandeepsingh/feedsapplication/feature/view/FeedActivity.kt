@@ -19,6 +19,10 @@ import com.sandeepsingh.feedsapplication.feature.presenter.FeedPresenter
 import kotlinx.android.synthetic.main.activity_feed.*
 import kotlinx.android.synthetic.main.layout_pull_referesh.*
 import kotlinx.android.synthetic.main.layout_toolbar.*
+import android.view.Gravity
+import android.widget.TextView
+import android.support.design.widget.Snackbar
+
 
 /**
  * Created by Sandeep on 11/17/18.
@@ -29,13 +33,14 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
 
     private lateinit var mPresenter: FeedPresenter
     private lateinit var mAdapter: FeedAdapter
+    private lateinit var snackbar: Snackbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_feed)
         ButterKnife.bind(this)
         setupMvp()
-        if (savedInstanceState != null){
+        if (savedInstanceState != null) {
             mPresenter.setFeeds(savedInstanceState.getParcelable(CONSTANT.FEED_KEY))
         }
         initComponents()
@@ -43,7 +48,7 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
     }
 
     override fun onSaveInstanceState(outState: Bundle?) {
-        outState?.putParcelable(CONSTANT.FEED_KEY,mPresenter.getFeeds())
+        outState?.putParcelable(CONSTANT.FEED_KEY, mPresenter.getFeeds())
         super.onSaveInstanceState(outState)
     }
 
@@ -58,23 +63,39 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
 
     /**
      * Function to initialise the view related components.
+     * This will set the layout for recycler view and attach an adapter to set the items.
+     * Also, initializing snackbar to show when no network connectivity is there.
      */
     private fun initComponents() {
         recycler_view.layoutManager = LinearLayoutManager(this)
         mAdapter = if (mPresenter.getFeeds() != null) {
             FeedAdapter(mPresenter.getFeeds()!!.rows!!, this)
         } else {
-            FeedAdapter(ArrayList(),this)
+            FeedAdapter(ArrayList(), this)
         }
         recycler_view.adapter = mAdapter
         recycler_view.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
         refresh_layout.setOnRefreshListener {
             loadData()
         }
+
+        addSnackBar()
+    }
+
+    /**
+     * Adding a snackbar view with coordinator layout as a root view.
+     * Helpful for no internet connectivity.
+     */
+    private fun addSnackBar() {
+        snackbar = Snackbar.make(rl_feed_activity, "No Internet connection", Snackbar.LENGTH_SHORT)
+        val view = snackbar.view
+        val tvSnackTextView = view.findViewById(android.support.design.R.id.snackbar_text) as TextView
+        tvSnackTextView.gravity = Gravity.CENTER_HORIZONTAL
     }
 
     /**
      * Function to set the toolbar title for this view
+     * Title is being fetched from API and displaying on toolbar.
      */
     private fun setToolbar(headerTitle: String) {
         tv_header.text = headerTitle
@@ -82,6 +103,7 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
 
     /**
      * Method that invokes model's method through presenter to fetch updated feeds.
+     * Loading feeds related to 'Canada' by using retrofit instance .
      */
     private fun loadData() {
         refresh_layout.isRefreshing = true
@@ -89,7 +111,7 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
             componentsVisibility(true)
             mPresenter.loadData()
         } else {
-           componentsVisibility(false)
+            componentsVisibility(false)
         }
     }
 
@@ -97,14 +119,18 @@ class FeedActivity : AppCompatActivity(), IFeed.PresenterToView {
      * Function that plays with visibility of components
      * @param isVisible : Boolean value to passed based on the (connectivity/no data) scenarios.
      */
-    private fun componentsVisibility(isVisible : Boolean){
-        if (isVisible){
-            layout_no_internet.visibility = View.GONE
+    private fun componentsVisibility(isVisible: Boolean) {
+        if (isVisible) {
             recycler_view.visibility = View.VISIBLE
         } else {
             refresh_layout.isRefreshing = false
-            layout_no_internet.visibility = View.VISIBLE
-            recycler_view.visibility = View.GONE
+            if (mPresenter.getFeeds() != null) {
+                recycler_view.visibility = View.VISIBLE
+            } else {
+                recycler_view.visibility = View.GONE
+            }
+
+            snackbar.show()
         }
     }
 

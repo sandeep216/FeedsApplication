@@ -27,7 +27,7 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
     }
 
     /**
-     * This method is invoked by the activity to fetch the data.
+     * Invoked by the activity to fetch the data from the API.
      */
     override fun loadData() {
         model!!.loadData()
@@ -44,7 +44,7 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
     }
 
     /**
-     * This method is invoked only when API failures or Exception have occurred.
+     * On scenarios when API failures or Exception have occurred.
      */
     override fun dataNotLoaded() {
         if (getView()!= null){
@@ -53,14 +53,14 @@ class FeedPresenter(view : IFeed.PresenterToView) : BasePresenter<IFeed.Presente
     }
 
     /**
-     * This methods return data to the view while updating adapter
+     * Returns data to the view while updating adapter through presenter.
      */
     override fun getFeeds(): Feeds? {
        return model!!.getFeeds()
     }
 
     /**
-     * This methods provides the data if previously fetched
+     * Provides the data if previously fetched from the API
      */
     override fun setFeeds(feeds: Feeds?) {
         model!!.setFeeds(feeds)

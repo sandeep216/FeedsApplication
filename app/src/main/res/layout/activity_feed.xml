@@ -1,27 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/rl_feed_activity"
         tools:context=".feature.view.FeedActivity">
 
-    <include layout="@layout/layout_toolbar"
-             android:id="@+id/toolbar"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_toolbar"
+                 android:id="@+id/toolbar"
+                 android:layout_width="match_parent"
+                 android:layout_height="wrap_content"/>
 
-    <include layout="@layout/layout_pull_referesh"
-             android:layout_below="@id/toolbar"
-             android:layout_width="match_parent"
-             android:layout_height="wrap_content"/>
+        <include layout="@layout/layout_pull_referesh"
+                 android:layout_below="@id/toolbar"
+                 android:layout_width="match_parent"
+                 android:layout_marginTop="?attr/actionBarSize"
+                 android:layout_height="wrap_content"/>
 
-    <include layout="@layout/layout_no_internet"
-             android:id="@+id/layout_no_internet"
-             android:layout_below="@id/toolbar"
-             android:layout_width="match_parent"
-             android:visibility="gone"
-             android:layout_height="match_parent"/>
+        <include layout="@layout/layout_no_internet"
+                 android:id="@+id/layout_no_internet"
+                 android:layout_below="@id/toolbar"
+                 android:layout_width="match_parent"
+                 android:visibility="gone"
+                 android:layout_height="match_parent"/>
 
 
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
