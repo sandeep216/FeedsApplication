@@ -946,6 +946,7 @@ id refresh_layout
 id right
 id right_icon
 id right_side
+id rl_feed_activity
 id save_image_matrix
 id save_non_transition_alpha
 id save_scale_type

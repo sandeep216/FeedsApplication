@@ -12,6 +12,8 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.lang.Exception
+import java.net.InetAddress
+import java.net.UnknownHostException
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -50,28 +52,8 @@ class Utils {
          * @return Boolean value based on internet connectivity.
          */
         fun haveNetworkConnection(context: Context): Boolean {
-            var haveConnectedWifi = false
-            var haveConnectedMobile = false
-
-            val connectivityManager = context
-                .getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-            val networks = connectivityManager.allNetworks
-            var networkInfo: NetworkInfo
-            for (mNetwork in networks) {
-                networkInfo = connectivityManager.getNetworkInfo(mNetwork)
-                if (networkInfo.state == NetworkInfo.State.CONNECTED) {
-                    if (networkInfo.typeName.equals("WIFI", ignoreCase = true)) {
-                        haveConnectedWifi = true
-                        if (haveConnectedMobile)
-                            break
-                    } else if (networkInfo.typeName.equals("MOBILE", ignoreCase = true)) {
-                        haveConnectedMobile = true
-                        if (haveConnectedWifi)
-                            break
-                    }
-                }
-            }
-            return haveConnectedWifi || haveConnectedMobile
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            return connectivityManager.activeNetworkInfo != null && connectivityManager.activeNetworkInfo.isConnected
         }
 
         /**

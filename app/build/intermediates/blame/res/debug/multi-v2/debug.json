@@ -1263,33 +1263,35 @@
             ]
         },
         {
-            "outputFile": "/Users/sandeepsingh/Downloads/FeedsApplication/app/build/intermediates/res/merged/debug/values-v24_values-v24.arsc.flat",
+            "outputFile": "/Users/sandeepsingh/Downloads/FeedsApplication/app/build/intermediates/res/merged/debug/values-land_values-land.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/7874d7cd9680d40c873768c42f192a2e/res/values-v24/values-v24.xml",
+                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/4b0273e457d78b75e618f4f7ec768292/res/values-land/values-land.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "55,121,182,248",
-                        "endColumns": "65,60,65,66",
-                        "endOffsets": "116,177,243,310"
-                    },
-                    "to": {
-                        "startLines": "4,5,6,7",
-                        "startColumns": "4,4,4,4",
-                        "startOffsets": "347,413,474,540",
-                        "endColumns": "65,60,65,66",
-                        "endOffsets": "408,469,535,602"
+                        "startOffsets": "55,125,189,260",
+                        "endColumns": "69,63,70,67",
+                        "endOffsets": "120,184,255,323"
                     }
                 },
                 {
-                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/4b0273e457d78b75e618f4f7ec768292/res/values-v24/values-v24.xml",
+                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a96a4a1fd8d6697ee6c5d52b25764df3/res/values-land/values-land.xml",
                     "from": {
-                        "startLines": "2,3",
-                        "startColumns": "4,4",
-                        "startOffsets": "55,212",
-                        "endColumns": "156,134",
-                        "endOffsets": "207,342"
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endLines": "5",
+                        "endColumns": "12",
+                        "endOffsets": "232"
+                    },
+                    "to": {
+                        "startLines": "6",
+                        "startColumns": "4",
+                        "startOffsets": "328",
+                        "endLines": "9",
+                        "endColumns": "12",
+                        "endOffsets": "505"
                     }
                 }
             ]
@@ -1327,35 +1329,33 @@
             ]
         },
         {
-            "outputFile": "/Users/sandeepsingh/Downloads/FeedsApplication/app/build/intermediates/res/merged/debug/values-land_values-land.arsc.flat",
+            "outputFile": "/Users/sandeepsingh/Downloads/FeedsApplication/app/build/intermediates/res/merged/debug/values-v24_values-v24.arsc.flat",
             "map": [
                 {
-                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/4b0273e457d78b75e618f4f7ec768292/res/values-land/values-land.xml",
+                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/support-media-compat-27.1.1.aar/7874d7cd9680d40c873768c42f192a2e/res/values-v24/values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
-                        "startOffsets": "55,125,189,260",
-                        "endColumns": "69,63,70,67",
-                        "endOffsets": "120,184,255,323"
+                        "startOffsets": "55,121,182,248",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "116,177,243,310"
+                    },
+                    "to": {
+                        "startLines": "4,5,6,7",
+                        "startColumns": "4,4,4,4",
+                        "startOffsets": "347,413,474,540",
+                        "endColumns": "65,60,65,66",
+                        "endOffsets": "408,469,535,602"
                     }
                 },
                 {
-                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/design-27.1.1.aar/a96a4a1fd8d6697ee6c5d52b25764df3/res/values-land/values-land.xml",
+                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/4b0273e457d78b75e618f4f7ec768292/res/values-v24/values-v24.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endLines": "5",
-                        "endColumns": "12",
-                        "endOffsets": "232"
-                    },
-                    "to": {
-                        "startLines": "6",
-                        "startColumns": "4",
-                        "startOffsets": "328",
-                        "endLines": "9",
-                        "endColumns": "12",
-                        "endOffsets": "505"
+                        "startLines": "2,3",
+                        "startColumns": "4,4",
+                        "startOffsets": "55,212",
+                        "endColumns": "156,134",
+                        "endOffsets": "207,342"
                     }
                 }
             ]
