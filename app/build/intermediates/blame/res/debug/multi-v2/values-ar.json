@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/sandeepsingh/Downloads/FeedsApplication/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ar/values-ar.xml",
+            "outputFile": "/Users/sandeep/Downloads/FeedsApplication/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-ar/values-ar.xml",
             "map": [
                 {
-                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/4b0273e457d78b75e618f4f7ec768292/res/values-ar/values-ar.xml",
+                    "source": "/Users/sandeep/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.1.aar/f028c3c115072f4d89bdced79b9689e7/res/values-ar/values-ar.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/Users/sandeepsingh/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/15f94d8b5101dc24a97edf78b827bc38/res/values-ar/values-ar.xml",
+                    "source": "/Users/sandeep/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.1.aar/6d9dbfd5800fda96b75c6f67670484bb/res/values-ar/values-ar.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
